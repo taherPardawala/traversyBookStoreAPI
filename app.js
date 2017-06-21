@@ -6,6 +6,7 @@ var app = express();
 mongoose.connect('mongodb://localhost/bookstore');
 var db = mongoose.connection;
 
+app.use(express.static('./public'));
 app.use(bodyparser.json());
 app.use('/api',require('./routes/api'));
 
