@@ -31,7 +31,7 @@ router.get('/books/:_id', function(req, res){
 });
 
 router.post('/genres', function(req, res){
-    Genre.addGenre(req.body, function(err, genere){
+    Genre.addGenre(req.body, function(err, genre){
         if(err){
             throw err;
         }
@@ -48,8 +48,22 @@ router.post('/books', function(req, res){
     });    
 });
 
-router.put('/genres', function(req, res){
-    
+router.put('/genres/:_id', function(req, res){
+    Genre.updateGenre(req.params._id, req.body, {}, function(err, genre){
+        if(err){
+            throw err;
+        }
+        res.json(genre);
+    });
+});
+
+router.put('/books/:_id', function(req, res){
+    Book.updateBook(req.params._id, req.body, {}, function(err, book){
+        if(err){
+            throw err;
+        }
+        res.json(book);
+    });
 });
 
 router.delete('/genres', function(req, res){
