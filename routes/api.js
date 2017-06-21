@@ -21,7 +21,25 @@ router.get('/books', function(req, res){
     });
 });
 
+router.get('/books/:_id', function(req, res){
+    Book.getBookById(req.params._id, function(err, book){
+        if(err){
+            throw err;
+        }
+        res.json(book);
+    });
+});
+
 router.post('/genres', function(req, res){
+    Genre.addGenre(req.body, function(err, genre){
+        if(err){
+            throw err;
+        }
+        res.json(genre);
+    });
+});
+
+router.post('/books', function(req, res){
     
 });
 
