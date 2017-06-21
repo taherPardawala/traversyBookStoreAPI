@@ -31,7 +31,7 @@ router.get('/books/:_id', function(req, res){
 });
 
 router.post('/genres', function(req, res){
-    Genre.addGenre(req.body, function(err, genre){
+    Genre.addGenre(req.body, function(err, genere){
         if(err){
             throw err;
         }
@@ -40,7 +40,12 @@ router.post('/genres', function(req, res){
 });
 
 router.post('/books', function(req, res){
-    
+    Book.addBook(req.body, function(err, book){
+        if(err){
+            throw err;
+        }
+        res.json(book);
+    });    
 });
 
 router.put('/genres', function(req, res){
