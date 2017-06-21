@@ -66,8 +66,22 @@ router.put('/books/:_id', function(req, res){
     });
 });
 
-router.delete('/genres', function(req, res){
-    
+router.delete('/genres/:_id', function(req, res){
+    Genre.deleteGenre(req.params._id, function(err, genre){
+        if(err){
+            throw err;
+        }
+        res.json(genre);
+    });
+});
+
+router.delete('/books/:_id', function(req, res){
+    Book.deleteBook(req.params._id, function(err, book){
+        if(err){
+            throw err;
+        }
+        res.json(book);
+    });
 });
 
 module.exports = router;
